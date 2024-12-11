@@ -1,34 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
+import MarketPlace from './components/MarketPlace'
+import Cart from './components/Cart'
+import { BrowserRouter, Routes, Route,Link } from 'react-router-dom'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+    
+    <div className='min-h-screen w-screen bg-slate-300'>
+     <nav className='flex px-4 h-[100px] bg-gray-400 items-center justify-between'>
+     <Link to='/'>
+     <h1 className='text-4xl text-center uppercase underline'>shopping factory</h1>
+     </Link>
+     <Link to='/cart'>
+<h4 className='text-2xl bg-blue-600 text-white px-4 py-2 capitalize rounded-lg '>cart</h4>
+     </Link>
+     </nav>
+     <Routes>
+          <Route path="/" element={<MarketPlace />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+
+    </div>
+    </BrowserRouter>
   )
 }
 
